@@ -416,3 +416,12 @@ hotfix/* ──PR──► main (+ tag) and ──PR──► develop
 - Lead with the conclusion, then details; write complete sentences, not telegraphic fragments.
 - When marking work done, include verification commands and results (or explain why they were not run).
 - Do not pile on unrelated follow-ups; mention out-of-scope issues briefly, do not expand scope unilaterally.
+
+## 12. Local integration workflow (user preference)
+
+- `codex/integration` is the local branch for running and testing all completed fixes together. Keep the primary checkout on this branch after finishing a task.
+- Ask the user before starting each new issue. If declined, move to the next issue.
+- Create each independent fix branch from the latest `upstream/develop`, not from `codex/integration`. Submit its PR to `TencentCloud/Octop:develop`.
+- After verifying a fix, merge its branch into `codex/integration` and verify the combined result. Preserve the independent PR branch; do not merge the integration branch back into it.
+- Keep merge resolutions that reconcile separate features on the integration branch. Do not submit the integration branch as a combined upstream PR.
+- Run the project with `make dev` when needed.
